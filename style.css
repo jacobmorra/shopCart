@@ -16,3 +16,8 @@
 	border-radius: 100%;
 	float: left;
 }
+
+.opaque{
+	opacity: 0.2;
+	filter: alpha(opacity=20); /* For IE8 and earlier */
+}
