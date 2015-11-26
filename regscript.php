@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="jumbotron">
-	<a href= "frontuser.php"> <img class="logo" src="greenCart.jpg"> </a>	
+	<a href= "frontpage.php"> <img class="logo" src="greenCart.jpg"> </a>	
 	<p class="title"> shopCart | New User Registration</p>
 </div>
 <div class="container">

@@ -1,3 +1,6 @@
+<!--this file is not to be run stand-alone. It is appended to frontpage.php
+	..this is why I have omitted "session_start()" from the code.        -->
+
 <?php
 $status = session_status();
 
