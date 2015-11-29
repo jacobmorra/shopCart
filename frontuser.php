@@ -2,9 +2,32 @@
 	..this is why I have omitted "session_start()" from the code.        -->
 
 <?php
-$status = session_status();
+//error-testing: check MD5 value of username with cookie value of past user
+/*echo $_SESSION["username"];
+echo "<br>";
+echo MD5($_SESSION["username"]);
+echo "<br>";
+echo $_COOKIE["userid"];
+*/
+$dbLocalhost = mysql_connect("localhost:3306", "root", "")
+	or die("Could not connect: " . mysql_error());
+		
+mysql_select_db("shopCartUsers", $dbLocalhost)
+	or die ("Could not find database: " . mysql_error());
 
-//echo $status;
+$result = mysql_query("SELECT 1 FROM usercart WHERE userid='$_COOKIE[userid]' LIMIT 1");
+//if the user cookie is already in the database
+if (mysql_fetch_row($result)) {
+    //echo 'Assigned';
+} 
+//otherwise if the user cookie isn't already in the database 
+else {
+    //echo 'Available';
+	$insertRec = "INSERT INTO usercart (userid) VALUES ('$_COOKIE[userid]')";
+			
+	mysql_query($insertRec, $dbLocalhost)
+	or die("Could not insert user: " . mysql_error());
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,66 +38,97 @@ $status = session_status();
 <body>
 <div class="jumbotron">
 	<a href= "frontpage.php"> <img class="logo" src="greenCart.jpg"> </a>	
-	<p class="title"> shopCart - USER PAGE</p>
+	<p class="title">shopCart</p>
 	<?php echo "<p style='color:white'> Welcome, " . $_SESSION['username']. "! </p>"?>	
 </div>
 <div class="container">
-
+<div style="width:100%">
+<div style="float: left; width: 50%"> 
+	<a href="logout.php">
+		<button type="button" class="btn btn-primary" style="float:left">Click to logout</button>
+	</a>		
+</div>
+<div style="float: right; width: 50%">
+	<a href="checkout.php">
+		<button type="button" class="btn btn-primary"style="float:right">Click to checkout</button>
+	</a>
+</div>
+</div>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
 		<h3>Ultimate Twix!</h3>
 		<img class="img-thumbnail" width="304" height="236" src = "http://www.chocolate-brands.com/image/cache/data/Mars/mars-twix-display-500x500.jpg">
-		<p class="well">Price: $4.99/ea 
-		<button type="button" style="float:right" class="btn btn-success">
-		<span class="glyphicon glyphicon-plus"></span>
-		</button>
-		</p>
+		<p class="well">Price: $4.99/ea </p>
+		
+		<div style="width:100%">
+		<div style="float: left; width: 50%"> 
+		<form method="post" action="addTtocart.php">	
+			<label for="tSubmit" class="btn"><i class="btn btn-success" ><span class="glyphicon glyphicon-plus"></span></i></label>
+			<input id="tSubmit" type="submit" value="tsubmit" name="tsubmit" class="hidden" />
+		</form>
+		</div>
+		<div style="float: left; width: 50%">
+		<form style="float:right" method="post" action="rmvTtocart.php">
+			<label for="trSubmit" class="btn"><i class="btn btn-danger" ><span class="glyphicon glyphicon-minus"></span></i></label>
+			<input id="trSubmit" type="submit" value="trsubmit" name="trsubmit" class="hidden" />
+		</form>
+		</div>
+		</div>
     </div>
     <div class="col-sm-4">
 		<h3>Kit Kat Chunky!</h3>
 		<img class="img-thumbnail" width="304" height="236" src = "http://thumbs1.ebaystatic.com/d/l225/m/mZs9BTHDJ3Nn5aP1UOBGIcA.jpg">
-		<p class="well">Price: $3.99/ea 
-		<button type="button" style="float:right" class="btn btn-success">
-		<span class="glyphicon glyphicon-plus"></span>
-		</button>
-		</p>
+		<p class="well">Price: $3.99/ea </p>
+		
+		<div style="width:100%">
+		<div style="float: left; width: 50%"> 
+		<form method="post" action="addKtocart.php">
+			<label for="kSubmit" class="btn"><i class="btn btn-success" ><span class="glyphicon glyphicon-plus"></span></i></label>
+			<input id="kSubmit" type="submit" value="ksubmit" name="ksubmit" class="hidden" />
+		</form>
+		</div>
+		<div style="float: left; width: 50%">
+		<form style="float:right" method="post" action="rmvKtocart.php">
+			<label for="krSubmit" class="btn"><i class="btn btn-danger" ><span class="glyphicon glyphicon-minus"></span></i></label>
+			<input id="krSubmit" type="submit" value="krsubmit" name="krsubmit" class="hidden" />
+		</form>
+		</div>
+		</div>
     </div>
     <div class="col-sm-4">
 		<h3>Mars Bar Xtreme!</h3> 
 		<img class="img-thumbnail" width="304" height="236" src = "http://www.candywarehouse.com/assets/item/large/image-130632.jpg">
-		<p class="well">Price: $4.99/ea 
-		<button type="button" style="float:right" class="btn btn-success">
-		<span class="glyphicon glyphicon-plus"></span>
-		</button>
-		</p>
+		<p class="well">Price: $2.99/ea
+		
+		<div style="width:100%">
+		<div style="float: left; width: 50%"> 
+		<form method="post" action="addMtocart.php"> 
+			<label for="mSubmit" class="btn"><i class="btn btn-success" ><span class="glyphicon glyphicon-plus"></span></i></label>
+			<input id="mSubmit" type="submit" value="msubmit" name="msubmit" class="hidden" />
+		</form>
+		</div>
+		<div style="float: left; width: 50%">
+		<form style="float:right" method="post" action="rmvMtocart.php">
+			<label for="mrSubmit" class="btn"><i class="btn btn-danger" ><span class="glyphicon glyphicon-minus"></span></i></label>
+			<input id="mrSubmit" type="submit" value="mrsubmit" name="mrsubmit" class="hidden" />
+		</form>
+		</div>
+		</div>
     </div>
   </div>
 </div>
-<!--<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Kinder Bueno Bundle!</h3>
-	  <img class="img-thumbnail" width="304" height="236" src = "http://i.ebayimg.com/images/i/271631270771-0-1/s-l1000.jpg">
-	  <p>Price: $5.99/ea</p>
-	</div>
-    <div class="col-sm-4">
-      <h3>Smarties Supreme!</h3>
-	  <img class="img-thumbnail" width="304" height="236" src = "http://www.vzhh.de/upload/VerbraucherzentraleHamburg/images/ernaehrung/Nestle_Smarties_158_vorn_klein.jpg">
-	  <p>Price: $6.99/ea</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>M & M Madness!</h3>
-	  <img class="img-thumbnail" width="304" height="236" src = "http://ep.yimg.com/ay/blaircandy/m-m-s-candy-48ct-plain-21.jpg">
-	  <p>Price: $7.99/ea</p> 
-    </div>
-  </div>
+<br><br>
+
+<br><br><br>
+<br><br><br>
+<footer>
+	<div class="jumbotron">
+	<a href= "shopcart.xml"> <img class="logo" src="rss.png"> </a>	
+	<br><br><br><br><br><br><br><br>	
 </div>
--->
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+  <p>Jacob Morra &copy 2015</p>
+</footer>
 </body>
 </html>
