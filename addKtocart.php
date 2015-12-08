@@ -2,11 +2,10 @@
 require_once "Item.php";
 session_start();
 
-//echo "<p> ". $_COOKIE['userid'] . "</p> ";
-
 //connect to database (only connects if $_COOKIE['userid'] matches table entry)
 $dbLocalhost = mysql_connect("localhost:3306", "root", "")
 	or die("Could not connect: " . mysql_error());	
+
 mysql_select_db("shopCartUsers", $dbLocalhost)
 	or die ("Could not find database: " . mysql_error());
 

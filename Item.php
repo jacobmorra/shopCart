@@ -14,17 +14,15 @@ class Item{
 	}
 }
 class Twix extends Item{
-	
-	//$cost =  4.99;
-	
+		
 	public function addItemNum($add){	
-		$total = $this->getItemNum() + $add;
-		$this->setItemNum($total);
+		$total = $this->getItemNum() + $add;//get item number, then add $add
+		$this->setItemNum($total); //update item number with setItemNum
 		return ($total);
 	}
 	public function rmvItemNum($rmv){	
-		$total = $this->getItemNum() - $rmv;
-		if ($total>=0){
+		$total = $this->getItemNum() - $rmv;//get item number, subtract $rmv
+		if ($total>=0){				//only return total if its 0 or greater
 			$this->setItemNum($total);
 			return ($total);	
 		}
@@ -41,16 +39,14 @@ class Twix extends Item{
 
 class KitKat extends Item{
 	
-	//$cost =  3.99;
-	
 	public function addItemNum($add){	
-		$total = $this->getItemNum() + $add;
-		$this->setItemNum($total);
+		$total = $this->getItemNum() + $add;//get item number, then add $add
+		$this->setItemNum($total);//update item number with setItemNum
 		return ($total);
 	}
 	public function rmvItemNum($rmv){	
-		$total = $this->getItemNum() - $rmv;
-		if ($total>=0){
+		$total = $this->getItemNum() - $rmv;//get item number, subtract $rmv
+		if ($total>=0){				//only return total if its 0 or greater	
 			$this->setItemNum($total);
 			return ($total);	
 		}
@@ -66,16 +62,14 @@ class KitKat extends Item{
 
 class Mars extends Item{
 	
-	//$cost =  2.99;
-	
 	public function addItemNum($add){	
-		$total = $this->getItemNum() + $add;
-		$this->setItemNum($total);
+		$total = $this->getItemNum() + $add;//get item number, then add $add
+		$this->setItemNum($total);//update item number with setItemNum
 		return ($total);
 	}
 	public function rmvItemNum($rmv){	
-		$total = $this->getItemNum() - $rmv;
-		if ($total>=0){
+		$total = $this->getItemNum() - $rmv;//get item number, subtract $rmv
+		if ($total>=0){				//only return total if its 0 or greater
 			$this->setItemNum($total);
 			return ($total);	
 		}
@@ -89,23 +83,4 @@ class Mars extends Item{
 		return ($this->getItemNum()) * 2.99;
 	}
 }
-/*testing methods*/
-/*$it = new Item();
-
-$it->setItemNum(2);
-echo $it->getItemNum();
-
-$kt = new KitKat();
-
-echo $kt->getItemNum();
-
-$kt->setItemNum(5);
-echo $kt->getItemNum();
-
-$kt->addItemNum(3);
-echo "<br>";
-echo $kt->getItemNum();
-
-echo $kt->getCost();
-*/
 ?>
