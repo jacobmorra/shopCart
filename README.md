@@ -33,10 +33,6 @@ The following diagram showcases the major system scripts, pages, and database ta
 ##2.2	Product Functions
 The major functions of shopCart are outlined below:
 
-* Item 2
-  * Item 2a
-  * Item 2b
-
 * User Registration
   * Username and Email authentication 
   * Database Implementation
@@ -59,3 +55,18 @@ The major functions of shopCart are outlined below:
   * Checkout
   * Summary of Items
   * Total Cost displayed
+
+##2.3	Operating Environment
+
+####Testing Environment:
+
+shopCart was built and tested using XAMPP Control Panel v3.2.1 (with Apache version 2.4.16 and mysql 5.0.11)
+
+All files were stored within the Apache server (C:\xampp\htdocs\mywork\shopCart) on a local machine.
+
+The operating system used to build and test shopCart was Windows 8 (64-bit). 
+
+The browser used to build and test shopCart was Google Chrome v.46.0.2490.86.
+
+
+#3.	External Interface Requirements
