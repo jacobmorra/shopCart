@@ -8,13 +8,25 @@ The overall purpose of “shopCart” is a to allow user selection (including ad
 
 Secondary features of the “shopCart” software include user login and logout, forgotten password recovery, password change, session and cookie-based user information and web pages, and user validation via Captcha implementation.
 
+
+--
+
+
 ##1.2 Benefits of the Software:
 
 The shopCart page allows users to add, remove, and checkout items for purchase. The overall benefit of the software is that it allows users to shop from the comfort of their homes online; it serves as a quicker and more efficient alternative to a physical store.
 
+
+--
+
+
 ##1.3 Objectives of the Software:
 
 The overall objective for this software is to allow users to register, login to the site, and add and remove cart items; secondary objectives include additional user functionality (logout, password change, retrieving forgotten password, clearing the shopping cart, receiving a total cost, etc.)
+
+
+--
+
 
 ##1.4 Goals for this Software:
 
